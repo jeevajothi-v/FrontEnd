@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login page</title>
+  </head>
+  <body>
+    <frameset rows="100%,*">
+      <frame src="login.html" frameborder="0" />
+      <frame src="linkpage.html" frameborder="0" />
+    </frameset>
+    
+    <body style="background-color: thistle";>
+<center>
+    <h1>Login Page</h1>
+    <form id="Login-Page"  action="./linkpage.html">
+    <action="linkpage.html" method="post">
+      <label for="name-input">Name   :</label>
+      <input type="text" id="name-input" required>
+      <br><br>
+      <label for="phone-input">Phone  :</label>
+      <input type="tel" id="phone-input" pattern="[0-9]{10}" required>
+      <br><br>
+      <label for="email-input">Email  :</label>
+      <input type="Email" id="email-input" required>
+      <br><br>
+      <button type="submit">Login</button>
+    </form>
+    <script>
+      const loginPage = document.querySelector('#login-form');
+      const nameInput = document.querySelector('#name-input');
+      const phoneInput = document.querySelector('#phone-input');
+      const emailInput = document.querySelector('#email-input');
+
+      loginPage.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (isValidForm()) {
+          localStorage.setItem('Name', nameInput.value);
+          localStorage.setItem('Phone', phoneInput.value);
+          localStorage.setItem('Email', emailInput.value);
+          window.location.href = 'second-page.html';
+        }
+      });
+
+      function isValidForm() {
+        let isValid = true;
+        const phonePattern = /^\d{10}$/;
+        if (nameInput.value.trim() === '') {
+          showError('Please enter your name.');
+          isValid = false;
+        }
+        if (!phonePattern.test(phoneInput.value)) {
+          showError('Please enter a valid phone number.');
+          isValid = false;
+        }
+        if (emailInput.value.trim() === '') {
+          showError('Please enter your email address.');
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
+      function showError(errorMessage) {
+        const errorDiv = document.createElement('div');
+        errorDiv.textContent = errorMessage;
+        loginPage.appendChild(errorDiv);
+      }
+      if (localStorage.getItem('name') && localStorage.getItem('phone') && localStorage.getItem('email')) {
+        window.location.href = 'second-page.html';
+      }
+</center>
+    </script>
+  </body>
+</html>

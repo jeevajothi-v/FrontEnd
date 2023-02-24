@@ -1,0 +1,51 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color:white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.nav{
+    text-decoration: none;
+    display: flex;
+    flex-direction:row;
+    /* align-items: center; */
+    justify-content:end;
+    background-color: cyan;
+}
+.nav li{ 
+    margin: 10px;
+    padding-left: 10px;
+    list-style:none;
+    background-color: aqua;
+}
+.heading{
+    padding:30px;
+}
+
+a{
+    text-decoration: none;
+}
+.logout{
+    border: 2px solid white;
+    background-color: red;
+    border-radius: 15px;
+    padding:0 5px;
+    margin: 5px;
+}
+.pageLink{
+    background-color: aqua;
+    color: black;
+}
+
+table, td, th{
+    border: 1px solid;
+}
+table{
+    width: 100%;
+}
+td{
+    text-align: center;
+}
